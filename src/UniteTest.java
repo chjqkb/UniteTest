@@ -1,3 +1,6 @@
+import com.horstmann.corejava.Employee;
+import com.horstmann.corejava.Manager;
+
 import java.io.PrintStream;
 import java.util.Scanner;
 
@@ -11,6 +14,15 @@ public class UniteTest {
         out.printf("你输入的整数是奇数？ %b\n", isOdd(i));
  */
 
+        Manager boss = new Manager("harry", 22222, 2019, 3, 5);
+
+        Employee[] staff = new Employee[3];
+
+        staff[0] = boss;
+        //boss  = (Manager)staff[0];
+
+        ((Manager)staff[0]).setBounus(5555);
+        out.printf("name: %s, salary: %f\n", staff[0].getName(), staff[0].getSalary());
 
     }
 
@@ -19,69 +31,4 @@ public class UniteTest {
     }
 }
 
-class Employee {
 
-
-    private static int nextId = 1;
-
-    private String name;
-    private int id;
-    private float salary;
-
-    public Employee(String empname,  float empsalary) {
-        name = empname;
-        salary = empsalary;
-    }
-
-    public  void setNextId() {
-        id = nextId;
-        nextId++;
-    }
-
-    public  int getNextId() {
-        return nextId;
-    }
-    public String  getName() {
-        return name;
-    }
-
-    public int getId(){
-        return  id;
-    }
-
-    public float getSalary(){
-        return salary;
-    }
-
-    public static void main(String[] args) {
-        Employee stuff = new Employee("TomCat", 500);
-        stuff.setNextId();
-        System.out.printf("Stuff's name %s, number: %d, salary: %f\n", stuff.getName(), stuff.getId(), stuff.getSalary());
-        System.out.println("nextId: "+ stuff.getNextId());
-    }
-}
-
-
-class Child {
-    private int age = 0;
-    private int weight = 0;
-
-    public static Child newChild(int age, int weight) {
-        Child child = new Child();
-        child.weight = weight;
-        child.age = age;
-        return child;
-    }
-
-    public static Child newChildWithAge(int age) {
-        Child child = new Child();
-        child.age = age;
-        return  child;
-    }
-
-    public static Child newChildWithWeight(int weight) {
-        Child child = new Child();
-        child.weight = weight;
-        return  child;
-    }
-}

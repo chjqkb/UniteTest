@@ -15,8 +15,8 @@ public class Manager extends Employee {
         return bounus;
     }
 
-    public Manager(String name, double salary) {
-        super(name, salary);
+    public Manager(String name, double salary, int year, int month, int day) {
+        super(name, salary, year, month, day);
         this.bounus = 0;
     }
 
@@ -26,11 +26,27 @@ public class Manager extends Employee {
 
     }
 
+    public boolean equals (Manager otherObject) {
+        /*
+        Manager 是 Employee 的子类。
+        所以，先检测它的父类的域是否相等，
+        如果检测过父类的域都相等，则再检测子类的域是否相等。
+         */
+        if (!super.equals(otherObject)) return false;
+        Manager other = (Manager) otherObject;
+        return  this.getBounus() == other.getBounus();
+    }
+
     public static void main(String[] args) {
         PrintStream out = System.out;
-        Manager Alex = new Manager("Alex", 7777);
+        Manager Alex = new Manager("Alex", 7777, 2019, 2, 14);
         Alex.setBounus(6000);
-        out.printf("mananger name: %s, salary: %.2f, hireDate: %s",
+        Manager Gaslex = new Manager("Alex", 7777, 2019, 2, 14);
+        Gaslex.setBounus(666);
+        out.println(Alex.equals( Gaslex));
+      /*  out.printf("mananger name: %s, salary: %.2f, hireDate: %s",
                 Alex.getName(), Alex.getSalary(), Alex.getHireDate().toString());
+
+       */
     }
 }
