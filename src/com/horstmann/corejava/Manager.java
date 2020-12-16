@@ -1,10 +1,13 @@
 package com.horstmann.corejava;
 
+import sun.security.action.PutAllAction;
+
 import java.io.PrintStream;
+import java.util.Objects;
 
 public class Manager extends Employee {
 
-    private double bounus;
+    private double bounus = 0;
 
     public void setBounus( double n) {
         bounus = n;
@@ -35,6 +38,22 @@ public class Manager extends Employee {
         if (!super.equals(otherObject)) return false;
         Manager other = (Manager) otherObject;
         return  this.getBounus() == other.getBounus();
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+
+        if (this instanceof Manager) {
+            hash = super.hashCode() + Objects.hashCode(bounus);
+        }
+
+        return  hash;
+
+    }
+
+    public String toString() {
+        return super.toString() + " " + getBounus();
     }
 
     public static void main(String[] args) {

@@ -3,6 +3,7 @@ import com.horstmann.corejava.Manager;
 
 import java.io.PrintStream;
 import java.util.Arrays;
+import java.util.jar.Manifest;
 
 public class UniteTest {
     public static void main(String [] args){
@@ -51,7 +52,26 @@ public class UniteTest {
 
  */
 
+        Employee Trump = new Employee("Trump", 44444, 2018, 2, 12);
 
+        Employee Tom = new Employee("Trump", 44444, 2018, 2, 12);
+        out.println( Trump.hashCode() );
+        out.println( Tom.hashCode() );
+
+        out.println( Tom.equals(Trump));
+
+        out.println( Trump.hashCode() == Tom.hashCode());
+
+        Manager boss = new Manager("Boss", 6666, 1999, 2, 5);
+        Manager carl = new Manager("Boss", 6666, 1999, 2, 5);
+
+        out.println("boss and carl: "+ carl.equals( boss));
+        out.printf("boss and carl hash code: %b\n", boss.hashCode() == carl.hashCode() );
+
+        out.println("Employee toString() test: " + Tom.toString());
+
+        boss.setBounus( 5000 );
+        out.println("Manager toString() test: " + boss.toString() );
 
 
     }

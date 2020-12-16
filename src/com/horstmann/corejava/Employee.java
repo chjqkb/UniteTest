@@ -82,6 +82,25 @@ public class Employee extends Person {
 
     }
 
+    @Override
+    public int hashCode() {
+
+        int hash = 0;
+        if (this instanceof Employee) {
+            hash = super.getName().hashCode() + Double.hashCode(salary) + Objects.hashCode(hireDate);
+        }
+
+
+        return hash;
+    }
+
+    @Override
+    public String toString() {
+
+            return getName() + " : " + getHireDate() + " " + getSalary();
+
+    }
+
     public static void main(String[] args) {
         Employee harry = new Employee("harry", 2222, 2020, 12, 1);
         harry.getDescription();
