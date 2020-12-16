@@ -3,7 +3,6 @@ import com.horstmann.corejava.Manager;
 
 import java.io.PrintStream;
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class UniteTest {
     public static void main(String [] args){
@@ -15,16 +14,26 @@ public class UniteTest {
         out.printf("你输入的整数是奇数？ %b\n", isOdd(i));
  */
 
+        /*
         Manager boss = new Manager("harry", 22222, 2019, 3, 5);
 
         Employee[] staff = new Employee[3];
 
         staff[0] = boss;
-        staff[1] = new Employee("harry", 22222, 2019, 3, 5);
         //boss  = (Manager)staff[0];
 
         ((Manager)staff[0]).setBounus(5555);
         out.printf("name: %s, salary: %f\n", staff[0].getName(), staff[0].getSalary());
+
+
+        //使用 instanceof 测试 子类是否== 超类
+        //getClass() 返回对象运行时的「类」类型
+        out.println(boss instanceof Employee);
+        out.println(boss.getClass().getName());
+        staff[1] = new Employee("calry", 7788, 2002, 5, 12);
+        out.println( staff[1] instanceof  Employee);
+        out.println(staff[1].getClass().getName());
+
 
         if(boss  instanceof Employee){
             out.println("yes");
@@ -39,6 +48,12 @@ public class UniteTest {
         out.println("" + staff);
 
         out.println(Arrays.deepToString( staff ));
+
+ */
+
+
+
+
     }
 
     public static  boolean isOdd(int i){
