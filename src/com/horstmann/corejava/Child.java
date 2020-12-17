@@ -39,5 +39,16 @@ public  class Child {
         System.out.println(yoki.getAga() + " " + yoki.getWeight());
         System.out.println(xiaohong.getAga() + " " + xiaohong.getWeight());
         System.out.println(xiaoming.getAga() + " " + xiaoming.getWeight());
+
+        Integer n = 5;
+        Double m = 6.0;
+
+        System.out.println( true ? n: m);
+
+        String s = "333";
+        n = Integer.parseInt(s);
+
+        System.out.println(n);
+
     }
 }
