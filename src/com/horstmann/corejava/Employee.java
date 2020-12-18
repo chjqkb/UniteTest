@@ -1,11 +1,20 @@
 package com.horstmann.corejava;
 
+import java.io.PrintStream;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.Random;
 
-public class Employee extends Person {
+public class Employee  extends Person implements Comparable  {
     private static int nextId;
+
+    @Override
+    public int compareTo(Object otherObject) {
+        Employee other = (Employee)otherObject;
+        return Double.compare(salary, other.salary);
+    }
+
     private int id;
     private double salary;
     private LocalDate hireDate =null;
@@ -102,14 +111,30 @@ public class Employee extends Person {
     }
 
     public static void main(String[] args) {
-        Employee harry = new Employee("harry", 2222, 2020, 12, 1);
-        harry.getDescription();
+        PrintStream out = System.out;
 
-        Employee MazKula =  harry;//new Employee("MazKula", 2222, 2020, 12, 1);
-        Employee Kong = null;
-        MazKula.getDescription();
+        Employee Harry = new Employee("harry", 2222, 2020, 12, 1);
+        Harry.getDescription();
 
-        System.out.println(harry.equals(Kong));
+        Employee Mazka =  new Employee("MazKa", 55555, 2020, 12, 1);
+
+        Employee Milk = new Employee("milk", 44433, 1999,1,1);
+
+        Employee Rockefeller = new Employee("feller", 77777, 2011, 5, 4);
+
+        Employee[] staff = new Employee[4];
+
+        staff[0] = Harry;
+        staff[1] = Mazka;
+        staff[2] = Milk;
+        staff[3] = Rockefeller;
+
+        out.println( Arrays.toString( staff));
+        Arrays.sort(staff);
+
+        out.printf("sorted staff: %s\n", Arrays.toString( staff ));
+
+
 
 
     }
