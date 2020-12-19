@@ -3,6 +3,7 @@ package com.horstmann.corejava;
 import sun.security.action.PutAllAction;
 
 import java.io.PrintStream;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Manager extends Employee {
@@ -58,14 +59,39 @@ public class Manager extends Employee {
 
     public static void main(String[] args) {
         PrintStream out = System.out;
-        Manager Alex = new Manager("Alex", 7777, 2019, 2, 14);
+        Manager Alex = new Manager("Alex", 78777, 2019, 2, 24);
         Alex.setBounus(6000);
-        Manager Gaslex = new Manager("Alex", 7777, 2019, 2, 14);
+        Manager Gaslex = new Manager("Gaslex", 71777, 2009, 5, 19);
         Gaslex.setBounus(666);
         out.println(Alex.equals( Gaslex));
-      /*  out.printf("mananger name: %s, salary: %.2f, hireDate: %s",
-                Alex.getName(), Alex.getSalary(), Alex.getHireDate().toString());
 
-       */
+        Manager Soros = new Manager("Soros", 87772, 2016, 9, 14);
+
+        Manager Buffie = new Manager("Buffie", 98822, 2005, 1, 20);
+
+
+        Manager[] manager = new Manager[]{Alex, Gaslex, Soros, Buffie};
+
+
+        //按名字长度排序
+        Arrays.sort(manager, new LengthComparator());
+        out.println("sort by length: ");
+        for ( Manager item : manager) {
+            out.print(item.getName() + " ");
+        }
+        out.println();
+
+
+        //按字典顺序排序
+        Arrays.sort(manager, new DictComparator());
+
+        out.println("sort by Dict: ");
+        for ( Manager item : manager) {
+            out.print(item.getName() + " ");
+        }
+        out.println();
+
+
+
     }
 }

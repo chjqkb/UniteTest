@@ -3,6 +3,7 @@ package com.horstmann.corejava;
 import java.io.PrintStream;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Objects;
 import java.util.Random;
 
@@ -135,7 +136,21 @@ public class Employee  extends Person implements Comparable  {
         out.printf("sorted staff: %s\n", Arrays.toString( staff ));
 
 
+        //按名字长度排序
+        Comparator compar = new LengthComparator();
+        Arrays.sort(staff, compar);
 
+        out.printf("sort by  length: \n");
+        for (Employee item: staff ) {
+            out.print(item.getName() + "\t");
+        }
+
+        //按名字的字典排序
+        Arrays.sort(staff, new DictComparator());
+        out.println("\nsort by dict: ");
+        for (Employee item: staff ) {
+            out.print(item.getName() + "\t");
+        }
 
     }
 }
