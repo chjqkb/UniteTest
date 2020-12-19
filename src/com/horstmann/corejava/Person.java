@@ -1,7 +1,7 @@
 package com.horstmann.corejava;
 
 
-public abstract  class Person {
+public abstract  class Person implements Cloneable {
     private String name;
 
     public Person(String name) {
@@ -12,5 +12,9 @@ public abstract  class Person {
 
     public  String getName(){
         return name;
+    }
+
+    public Person clone() throws CloneNotSupportedException {
+        return (Person) super.clone();
     }
 }

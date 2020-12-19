@@ -7,15 +7,9 @@ import java.util.Comparator;
 import java.util.Objects;
 import java.util.Random;
 
-public class Employee  extends Person implements Comparable  {
+public class Employee  extends Person implements Comparable,Cloneable  {
+
     private static int nextId;
-
-    @Override
-    public int compareTo(Object otherObject) {
-        Employee other = (Employee)otherObject;
-        return Double.compare(salary, other.salary);
-    }
-
     private int id;
     private double salary;
     private LocalDate hireDate =null;
@@ -111,6 +105,28 @@ public class Employee  extends Person implements Comparable  {
 
     }
 
+    @Override
+    public int compareTo(Object otherObject) {
+        Employee other = (Employee)otherObject;
+        return Double.compare(salary, other.salary);
+    }
+
+    public Employee clone() throws CloneNotSupportedException{
+/*
+            int year = this.getHireDate().getYear();
+            int month = this.getHireDate().getMonthValue();
+            int day = this.getHireDate().getDayOfMonth();
+            double salary = this.getSalary();
+            String name = this.getName();
+
+            Employee cloned = new Employee(name, salary, year, month, day);
+*/
+
+            Employee cloned = (Employee) super.clone();
+            return cloned;
+
+    }
+
     public static void main(String[] args) {
         PrintStream out = System.out;
 
@@ -151,6 +167,19 @@ public class Employee  extends Person implements Comparable  {
         for (Employee item: staff ) {
             out.print(item.getName() + "\t");
         }
+        Employee copy = null;
+
+        try {
+            copy = Harry.clone();
+        }catch (CloneNotSupportedException e) {
+            System.out.println("Error Clone().");
+        }
+
+        if(copy != null){
+            out.println("cloned: ");
+            copy.getDescription();
+        }
+
 
     }
 }
