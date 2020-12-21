@@ -2,10 +2,7 @@ package com.horstmann.corejava;
 
 import java.io.PrintStream;
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 public class Employee  extends Person implements Comparable,Cloneable  {
 
@@ -152,6 +149,7 @@ public class Employee  extends Person implements Comparable,Cloneable  {
         out.printf("sorted staff: %s\n", Arrays.toString( staff ));
 
 
+        /*
         //按名字长度排序
         Comparator compar = new LengthComparator();
         Arrays.sort(staff, compar);
@@ -160,6 +158,7 @@ public class Employee  extends Person implements Comparable,Cloneable  {
         for (Employee item: staff ) {
             out.print(item.getName() + "\t");
         }
+*/
 
         //按名字的字典排序
         Arrays.sort(staff, new DictComparator());
@@ -179,6 +178,26 @@ public class Employee  extends Person implements Comparable,Cloneable  {
             out.println("cloned: ");
             copy.getDescription();
         }
+
+        //用lambda表达式实现 Comparator<T> 接口，按照雇员的name的长度排序
+        out.println("lambda sort by name length: ");
+        Arrays.sort(staff, (a, b)->a.getName().length() - b.getName().length());
+
+        for( Employee e : staff){
+            out.print( e.getName() +"\t");
+        }
+
+        //测试，用lambda表达式实现名字长度的判断，如果长度等于6的名字就会被删除。
+        out.println("\ndelete name length == 6");
+        ArrayList<Employee> list = new ArrayList<>();
+
+        for (Employee item : staff) {
+            list.add(item);
+        }
+
+        list.removeIf(item -> item.getName().length() > 5);
+
+        out.println(  list.toString());
 
 
     }
